@@ -327,7 +327,7 @@ const Statistics = (props) => {
           <StatisticLine name="bad " num={props.bad} />
           <StatisticLine name="all" num={props.total} />
           <StatisticLine name="average" num={props.average} />
-          <StatisticLine name="positive" num={props.positive} />
+          <StatisticLine name="positive" num={props.positive + "%"} />
         </tbody>
       </table>
     </div>
@@ -347,10 +347,10 @@ const App = () => {
   const average = () => {
     let ave = (good - bad)
     let overAll = (ave / total)
-    return overAll;
+    return Math.round(overAll * 100)/100;
   }
   const positive = () => {
-    return (100 * good / total);
+    return Math.round(1000 * good / total)/10;
 
   }
   const statProps = {
